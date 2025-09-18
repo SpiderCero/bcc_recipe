@@ -1,242 +1,341 @@
 $engine: 3
 $onesync: on
 $steamRequired: true
-name: BCC Scripts Pack
+
+name: BCC Core Framework
 author: Bryce Canyon County
-description: BCC + VORP Official txAdmin Recipe! Incluye todos los recursos principales organizados.
+description: "Recipe de instalación para BCC Scripts + VORP Oficial (RedM RP)."
 
 variables:
     steam_webApiKey: "none"
 
 tasks:
 
-# =====================================================
-# 1. BASE OFICIAL VORP
-# =====================================================
-  - action: download_github
-    src: https://github.com/VORPCORE/VORP_txAdmin
-    ref: main
-    dest: ./temp/vorp_txAdminRecipe
-  
-  - action: move_path
-    src: ./temp/vorp_txAdminRecipe/server.cfg
-    dest: ./server.cfg
-
-  - action: connect_database
-  - action: query_database
-    file: ./temp/vorp_txAdminRecipe/MariaDB.sql
-
-  - action: move_path
-    src: ./temp/vorp_txAdminRecipe/icon.png
-    dest: ./icon.png
-
-# =====================================================
-# 2. CFX RECURSOS BASE
-# =====================================================
-  - action: download_github
-    src: https://github.com/citizenfx/cfx-server-data
-    ref: master
-    subpath: resources
-    dest: ./resources/
-  - action: remove_path
-    path: ./resources/[CFX]/[gameplay]/chat
-
-# =====================================================
-# 3. DEPENDENCIAS STANDALONE
-# =====================================================
-  - action: download_file
-    path: ./tmp/files/oxmysql.zip
-    url: https://github.com/overextended/oxmysql/releases/latest/download/oxmysql.zip
-  - action: unzip
-    dest: ./resources/[standalone]
-    src: ./tmp/files/oxmysql.zip
-
-  - action: download_github
-    src: https://github.com/AvarianKnight/pma-voice
-    ref: main
-    dest: ./resources/[standalone]/pma-voice
-
-  - action: download_github
-    src: https://github.com/mkafrin/PolyZone
-    ref: master
-    dest: ./resources/[standalone]/PolyZone
-
-  - action: download_github
-    src: https://github.com/kibook/weathersync
-    ref: master
-    dest: ./resources/[standalone]/weathersync
-
-  - action: download_github
-    src: https://github.com/outsider31000/redm-ipls
-    ref: main
-    dest: ./resources/[standalone]/redm-ipls
-
-  - action: download_github
-    src: https://github.com/outsider31000/moonshine_interiors
-    ref: main
-    dest: ./resources/[standalone]/moonshine_interiors
-
-  - action: download_github
-    src: https://github.com/outsider31000/syn_minigame
-    ref: main
-    dest: ./resources/[standalone]/syn_minigame
-
-  - action: download_github
-    src: https://github.com/outsider31000/lockpick
-    ref: main
-    dest: ./resources/[standalone]/lockpick
-
-  - action: download_github
-    src: https://github.com/outsider31000/loadingscreen
-    ref: main
-    dest: ./resources/[standalone]/loadingscreen
-
-# =====================================================
-# 4. CORE DE BCC
-# =====================================================
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-core
-    ref: main
-    dest: ./resources/[bcc]/bcc-core
-
+# -------------------------------------------------------------------
+# BCC CORE & UTILS
+# -------------------------------------------------------------------
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-utils
     ref: main
     dest: ./resources/[bcc]/bcc-utils
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-admin
+    src: https://github.com/BryceCanyonCounty/bcc-crypt
     ref: main
-    dest: ./resources/[bcc]/bcc-admin
+    dest: ./resources/[bcc]/bcc-crypt
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-menu
+    src: https://github.com/BryceCanyonCounty/bcc-serverpassword
     ref: main
-    dest: ./resources/[bcc]/bcc-menu
-
-# =====================================================
-# 5. SISTEMAS DE JUGABILIDAD
-# =====================================================
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-inventory
-    ref: main
-    dest: ./resources/[bcc]/bcc-inventory
+    dest: ./resources/[bcc]/bcc-serverpassword
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-crafting
+    src: https://github.com/BryceCanyonCounty/bcc-anticheat
     ref: main
-    dest: ./resources/[bcc]/bcc-crafting
+    dest: ./resources/[bcc]/bcc-anticheat
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-housing
+    src: https://github.com/BryceCanyonCounty/bcc-versioner
     ref: main
-    dest: ./resources/[bcc]/bcc-housing
+    dest: ./resources/[bcc]/bcc-versioner
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-hunting
+    src: https://github.com/BryceCanyonCounty/bcc-cfx-parser
     ref: main
-    dest: ./resources/[bcc]/bcc-hunting
+    dest: ./resources/[bcc]/bcc-cfx-parser
+
+# -------------------------------------------------------------------
+# ECONOMÍA & NEGOCIOS
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-banks
+    ref: main
+    dest: ./resources/[bcc]/bcc-banks
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-fishing
+    src: https://github.com/BryceCanyonCounty/bcc-shops
     ref: main
-    dest: ./resources/[bcc]/bcc-fishing
+    dest: ./resources/[bcc]/bcc-shops
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-mining
+    src: https://github.com/BryceCanyonCounty/bcc-society
     ref: main
-    dest: ./resources/[bcc]/bcc-mining
+    dest: ./resources/[bcc]/bcc-society
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-woodcutting
+    src: https://github.com/BryceCanyonCounty/bcc-jobmenu
     ref: main
-    dest: ./resources/[bcc]/bcc-woodcutting
-
-# =====================================================
-# 6. TRABAJOS OFICIALES
-# =====================================================
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-police
-    ref: main
-    dest: ./resources/[bcc]/bcc-police
+    dest: ./resources/[bcc]/bcc-jobmenu
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-medic
+    src: https://github.com/BryceCanyonCounty/bcc-job-alerts
     ref: main
-    dest: ./resources/[bcc]/bcc-medic
+    dest: ./resources/[bcc]/bcc-job-alerts
+
+# -------------------------------------------------------------------
+# FARMEOS, RANCHOS & CAMPAMENTOS
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-farming
+    ref: main
+    dest: ./resources/[bcc]/bcc-farming
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-ranch
+    ref: main
+    dest: ./resources/[bcc]/bcc-ranch
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-camp
+    ref: main
+    dest: ./resources/[bcc]/bcc-camp
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-stashes
+    ref: main
+    dest: ./resources/[bcc]/bcc-stashes
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-craft
+    ref: main
+    dest: ./resources/[bcc]/bcc-craft
+
+# -------------------------------------------------------------------
+# VEHÍCULOS, CABALLOS & TRANSPORTES
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-vehiclefixes
+    ref: main
+    dest: ./resources/[bcc]/bcc-vehiclefixes
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-boats
+    ref: main
+    dest: ./resources/[bcc]/bcc-boats
 
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-stables
     ref: main
     dest: ./resources/[bcc]/bcc-stables
 
-# =====================================================
-# 7. ECONOMÍA Y COMERCIO
-# =====================================================
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-banking
+    src: https://github.com/BryceCanyonCounty/bcc-wagons
     ref: main
-    dest: ./resources/[bcc]/bcc-banking
+    dest: ./resources/[bcc]/bcc-wagons
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-paycheck
+    src: https://github.com/BryceCanyonCounty/bcc-train
     ref: main
-    dest: ./resources/[bcc]/bcc-paycheck
+    dest: ./resources/[bcc]/bcc-train
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-stores
+    src: https://github.com/BryceCanyonCounty/bcc-pets
     ref: main
-    dest: ./resources/[bcc]/bcc-stores
+    dest: ./resources/[bcc]/bcc-pets
 
-# =====================================================
-# 8. SOCIAL & RP
-# =====================================================
+# -------------------------------------------------------------------
+# LEY & CRIMEN
+# -------------------------------------------------------------------
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-mail
+    src: https://github.com/BryceCanyonCounty/bcc-law
     ref: main
-    dest: ./resources/[bcc]/bcc-mail
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-emotes
-    ref: main
-    dest: ./resources/[bcc]/bcc-emotes
+    dest: ./resources/[bcc]/bcc-law
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-barbershop
+    src: https://github.com/BryceCanyonCounty/bcc-robbery
     ref: main
-    dest: ./resources/[bcc]/bcc-barbershop
+    dest: ./resources/[bcc]/bcc-robbery
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-metabolism
+    src: https://github.com/BryceCanyonCounty/bcc-posse
     ref: main
-    dest: ./resources/[bcc]/bcc-metabolism
+    dest: ./resources/[bcc]/bcc-posse
 
-# =====================================================
-# 9. UTILIDADES RP
-# =====================================================
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-blindfold
+    ref: main
+    dest: ./resources/[bcc]/bcc-blindfold
+
+# -------------------------------------------------------------------
+# MAPAS, BLIPS & INTERFAZ
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-customblips
+    ref: main
+    dest: ./resources/[bcc]/bcc-customblips
+
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-doorlocks
     ref: main
     dest: ./resources/[bcc]/bcc-doorlocks
 
   - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-outlaws
+    src: https://github.com/BryceCanyonCounty/bcc-scene
     ref: main
-    dest: ./resources/[bcc]/bcc-outlaws
+    dest: ./resources/[bcc]/bcc-scene
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-saloons
+    ref: main
+    dest: ./resources/[bcc]/bcc-saloons
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-playerblips
+    ref: main
+    dest: ./resources/[bcc]/bcc-playerblips
+
+# -------------------------------------------------------------------
+# EVENTOS & MISC
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-guarma
+    ref: main
+    dest: ./resources/[bcc]/bcc-guarma
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-water
+    ref: main
+    dest: ./resources/[bcc]/bcc-water
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-acidtrip
+    ref: main
+    dest: ./resources/[bcc]/bcc-acidtrip
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-nazar
+    ref: main
+    dest: ./resources/[bcc]/bcc-nazar
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-holidays
+    ref: main
+    dest: ./resources/[bcc]/bcc-holidays
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-oil
+    ref: main
+    dest: ./resources/[bcc]/bcc-oil
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-goldpanning
+    ref: main
+    dest: ./resources/[bcc]/bcc-goldpanning
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-legendaries
+    ref: main
+    dest: ./resources/[bcc]/bcc-legendaries
+
+# -------------------------------------------------------------------
+# HERRAMIENTAS & DESARROLLO
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-cli
+    ref: main
+    dest: ./resources/[bcc]/bcc-cli
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-documents
+    ref: main
+    dest: ./resources/[bcc]/bcc-documents
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-mailbox
+    ref: main
+    dest: ./resources/[bcc]/bcc-mailbox
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-portals
+    ref: main
+    dest: ./resources/[bcc]/bcc-portals
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-reports
+    ref: main
+    dest: ./resources/[bcc]/bcc-reports
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-ai
+    ref: main
+    dest: ./resources/[bcc]/bcc-ai
 
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-zonenotify
     ref: main
     dest: ./resources/[bcc]/bcc-zonenotify
 
-# =====================================================
-# 10. LIMPIEZA FINAL
-# =====================================================
-  - action: move_path
-    src: ./temp/[bcc]
-    dest: ./resources/[bcc]
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-sellNPC
+    ref: main
+    dest: ./resources/[bcc]/bcc-sellNPC
 
-  - action: remove_path
-    path: ./temp
-  - action: remove_path
-    path: ./tmp
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-minigames
+    ref: main
+    dest: ./resources/[bcc]/bcc-minigames
+
+# -------------------------------------------------------------------
+# COMPLEMENTOS VISUALES & LOADSCREENS
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-loadscreen
+    ref: main
+    dest: ./resources/[bcc]/bcc-loadscreen
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-loadscreen-helper
+    ref: main
+    dest: ./resources/[bcc]/bcc-loadscreen-helper
+
+# -------------------------------------------------------------------
+# BACKEND, DEV & DATA
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-userlog
+    ref: main
+    dest: ./resources/[bcc]/bcc-userlog
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-website
+    ref: main
+    dest: ./resources/[bcc]/bcc-website
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-deferralcards
+    ref: main
+    dest: ./resources/[bcc]/bcc-deferralcards
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-discord
+    ref: main
+    dest: ./resources/[bcc]/bcc-discord
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-bin
+    ref: main
+    dest: ./resources/[bcc]/bcc-bin
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-scene
+    ref: main
+    dest: ./resources/[bcc]/bcc-scene
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-vue-boilerplate
+    ref: main
+    dest: ./resources/[bcc]/bcc-vue-boilerplate
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/rdr3-nativedb-data
+    ref: main
+    dest: ./resources/[bcc]/rdr3-nativedb-data
+
+# -------------------------------------------------------------------
+# VORP OFICIAL (base)
+# -------------------------------------------------------------------
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/vorp_txadmin_recipe
+    ref: main
+    dest: ./resources/[vorp]/vorp_txadmin_recipe
+
