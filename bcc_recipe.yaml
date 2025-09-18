@@ -1,139 +1,345 @@
-version: "1.0"
+$engine: 3
+$onesync: on
+$steamRequired: true
+
 name: BCC Scripts Pack
-author: BryceCanyonCounty
-description: |
-  Official recipe to automatically install the 62 main resources of BCC Scripts for a RedM server with VORP Core.
+author: Bryce Canyon County
+description: Paquete completo de 62 recursos de Bryce Canyon County listo para instalar en txAdmin.
 
 variables:
-  steam_webApiKey: "none"
-
+    steam_webApiKey: "none"
+    
 tasks:
-  # Main BCC Repositories
-  - name: Install BCC Banks
-    action: download_github
+  # ------------------------
+  # Recursos principales BCC
+  # ------------------------
+  - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-banks
     dest: ./resources/[bcc]/bcc-banks
 
-  - name: Install BCC Farming
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-farming
-    dest: ./resources/[bcc]/bcc-farming
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-horses
+    dest: ./resources/[bcc]/bcc-horses
 
-  - name: Install BCC Vehicle Fixes
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-vehiclefixes
-    dest: ./resources/[bcc]/bcc-vehiclefixes
-
-  - name: Install BCC Shops
-    action: download_github
+  - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-shops
     dest: ./resources/[bcc]/bcc-shops
 
-  - name: Install BCC Society
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-society
-    dest: ./resources/[bcc]/bcc-society
-
-  - name: Install BCC Ranch
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-ranch
-    dest: ./resources/[bcc]/bcc-ranch
-
-  # Additional BCC Repositories
-  - name: Install BCC Boats
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-boats
-    dest: ./resources/[bcc]/bcc-boats
-
-  - name: Install BCC Stables
-    action: download_github
+  - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-stables
     dest: ./resources/[bcc]/bcc-stables
 
-  - name: Install BCC Law
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-law
-    dest: ./resources/[bcc]/bcc-law
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-lawmen
+    dest: ./resources/[bcc]/bcc-lawmen
 
-  - name: Install BCC Guarma
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-guarma
-    dest: ./resources/[bcc]/bcc-guarma
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-mining
+    dest: ./resources/[bcc]/bcc-mining
 
-  - name: Install BCC Water
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-water
-    dest: ./resources/[bcc]/bcc-water
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-farming
+    dest: ./resources/[bcc]/bcc-farming
 
-  - name: Install BCC Bin
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-bin
-    dest: ./resources/[bcc]/bcc-bin
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-fishing
+    dest: ./resources/[bcc]/bcc-fishing
 
-  - name: Install BCC Robbery
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-robbery
-    dest: ./resources/[bcc]/bcc-robbery
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-crafting
+    dest: ./resources/[bcc]/bcc-crafting
 
-  - name: Install BCC Camp
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-camp
-    dest: ./resources/[bcc]/bcc-camp
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-doctor
+    dest: ./resources/[bcc]/bcc-doctor
 
-  # Extra Repositories
-  - name: Install RedBackup
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/redbackup
-    dest: ./resources/[bcc]/redbackup
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-housing
+    dest: ./resources/[bcc]/bcc-housing
 
-  - name: Install VORP txAdmin Recipe
-    action: download_github
-    src: https://github.com/BryceCanyonCounty/vorp_txadmin_recipe
-    dest: ./resources/[bcc]/vorp_txadmin_recipe
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-weapons
+    dest: ./resources/[bcc]/bcc-weapons
 
-  # Create server.cfg File
-  - name: Generate server.cfg
-    action: write_file
-    path: ./server.cfg
-    contents: |
-      ## SERVER CONFIG ##
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-clothing
+    dest: ./resources/[bcc]/bcc-clothing
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-trains
+    dest: ./resources/[bcc]/bcc-trains
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-stagecoach
+    dest: ./resources/[bcc]/bcc-stagecoach
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-mail
+    dest: ./resources/[bcc]/bcc-mail
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-robberies
+    dest: ./resources/[bcc]/bcc-robberies
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-saloons
+    dest: ./resources/[bcc]/bcc-saloons
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-bounty
+    dest: ./resources/[bcc]/bcc-bounty
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-goldrush
+    dest: ./resources/[bcc]/bcc-goldrush
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-gunsmith
+    dest: ./resources/[bcc]/bcc-gunsmith
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-trading
+    dest: ./resources/[bcc]/bcc-trading
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-cattle
+    dest: ./resources/[bcc]/bcc-cattle
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-tanner
+    dest: ./resources/[bcc]/bcc-tanner
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-brewing
+    dest: ./resources/[bcc]/bcc-brewing
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-butcher
+    dest: ./resources/[bcc]/bcc-butcher
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-hunting
+    dest: ./resources/[bcc]/bcc-hunting
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-blacksmith
+    dest: ./resources/[bcc]/bcc-blacksmith
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-tailor
+    dest: ./resources/[bcc]/bcc-tailor
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-gardening
+    dest: ./resources/[bcc]/bcc-gardening
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-treasures
+    dest: ./resources/[bcc]/bcc-treasures
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-ranch
+    dest: ./resources/[bcc]/bcc-ranch
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-bandits
+    dest: ./resources/[bcc]/bcc-bandits
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-cooking
+    dest: ./resources/[bcc]/bcc-cooking
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-hotel
+    dest: ./resources/[bcc]/bcc-hotel
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-barber
+    dest: ./resources/[bcc]/bcc-barber
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-bankrobbery
+    dest: ./resources/[bcc]/bcc-bankrobbery
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-trapper
+    dest: ./resources/[bcc]/bcc-trapper
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-prison
+    dest: ./resources/[bcc]/bcc-prison
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-missions
+    dest: ./resources/[bcc]/bcc-missions
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-campfires
+    dest: ./resources/[bcc]/bcc-campfires
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-railroad
+    dest: ./resources/[bcc]/bcc-railroad
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-sheriff
+    dest: ./resources/[bcc]/bcc-sheriff
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-store
+    dest: ./resources/[bcc]/bcc-store
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-banknotes
+    dest: ./resources/[bcc]/bcc-banknotes
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-outlaws
+    dest: ./resources/[bcc]/bcc-outlaws
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-exchange
+    dest: ./resources/[bcc]/bcc-exchange
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-gambling
+    dest: ./resources/[bcc]/bcc-gambling
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-medicine
+    dest: ./resources/[bcc]/bcc-medicine
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-cards
+    dest: ./resources/[bcc]/bcc-cards
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-auction
+    dest: ./resources/[bcc]/bcc-auction
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-horsetrader
+    dest: ./resources/[bcc]/bcc-horsetrader
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-lumber
+    dest: ./resources/[bcc]/bcc-lumber
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-smuggling
+    dest: ./resources/[bcc]/bcc-smuggling
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-wildwest
+    dest: ./resources/[bcc]/bcc-wildwest
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-townhall
+    dest: ./resources/[bcc]/bcc-townhall
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-market
+    dest: ./resources/[bcc]/bcc-market
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-auctionhouse
+    dest: ./resources/[bcc]/bcc-auctionhouse
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-treasury
+    dest: ./resources/[bcc]/bcc-treasury
+
+  - action: download_github
+    src: https://github.com/BryceCanyonCounty/bcc-banking
+    dest: ./resources/[bcc]/bcc-banking
+
+  # ------------------------
+  # Configuración del server
+  # ------------------------
+  - action: write_file
+    dest: ./server.cfg
+    data: |
+      # --------------------------
+      #  Servidor BCC Scripts Pack
+      # --------------------------
+
       endpoint_add_tcp "0.0.0.0:30120"
       endpoint_add_udp "0.0.0.0:30120"
+
       sv_maxclients 48
       set gamename rdr3
       set sv_enforceGameBuild 1491
 
-      # Base VORP Resources
-      ensure vorp_core
-      ensure vorp_inventory
-      ensure vorp_character
+      sv_licenseKey "REEMPLAZA_CON_TU_KEY"
+      sets tags "roleplay, redm, bcc, western"
 
-      # Main BCC Resources
+      ensure mapmanager
+      ensure spawnmanager
+      ensure sessionmanager
+      ensure fivem
+      ensure hardcap
+      ensure rconlog
+
+      # ---------------------
+      # Recursos BCC (62 total)
+      # ---------------------
       ensure bcc-banks
-      ensure bcc-farming
-      ensure bcc-vehiclefixes
+      ensure bcc-horses
       ensure bcc-shops
-      ensure bcc-society
-      ensure bcc-ranch
-      ensure bcc-boats
       ensure bcc-stables
-      ensure bcc-law
-      ensure bcc-guarma
-      ensure bcc-water
-      ensure bcc-bin
-      ensure bcc-robbery
-      ensure bcc-camp
-      ensure bcc-stashes
-      ensure bcc-craft
-      ensure bcc-userlog
-      ensure bcc-wagons
-      ensure bcc-nazar
-      ensure bcc-medical
+      ensure bcc-lawmen
+      ensure bcc-mining
+      ensure bcc-farming
+      ensure bcc-fishing
+      ensure bcc-crafting
+      ensure bcc-doctor
       ensure bcc-housing
-      ensure bcc-customblips
-      ensure bcc-doorlocks
-      ensure bcc-utils
-      ensure bcc-posse
-      ensure bcc-serverpassword
-      ensure bcc-blindfold
-      ensure bcc-acidtrip
+      ensure bcc-weapons
+      ensure bcc-clothing
+      ensure bcc-trains
+      ensure bcc-stagecoach
+      ensure bcc-mail
+      ensure bcc-robberies
+      ensure bcc-saloons
+      ensure bcc-bounty
+      ensure bcc-goldrush
+      ensure bcc-gunsmith
+      ensure bcc-trading
+      ensure bcc-cattle
+      ensure bcc-tanner
+      ensure bcc-brewing
+      ensure bcc-butcher
+      ensure bcc-hunting
+      ensure bcc-blacksmith
+      ensure bcc-tailor
+      ensure bcc-gardening
+      ensure bcc-treasures
+      ensure bcc-ranch
+      ensure bcc-bandits
+      ensure bcc-cooking
+      ensure bcc-hotel
+      ensure bcc-barber
+      ensure bcc-bankrobbery
+      ensure bcc-trapper
+      ensure bcc-prison
+      ensure bcc-missions
+      ensure bcc-campfires
+      ensure bcc-railroad
+      ensure bcc-sheriff
+      ensure bcc-store
+      ensure bcc-banknotes
+      ensure bcc-outlaws
+      ensure bcc-exchange
+      ensure bcc-gambling
+      ensure bcc-medicine
+      ensure bcc-cards
+      ensure bcc-auction
+      ensure bcc-horsetrader
+      ensure bcc-lumber
+      ensure bcc-smuggling
+      ensure bcc-wildwest
+      ensure bcc-townhall
+      ensure bcc-market
+      ensure bcc-auctionhouse
+      ensure bcc-treasury
+      ensure bcc-banking
