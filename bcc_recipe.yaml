@@ -4,10 +4,13 @@ $steamRequired: true
 
 name: BCC Scripts Pack
 author: BryceCanyonCounty
-description: Recipe oficial para instalar automáticamente los 63 recursos principales de BCC Scripts en un servidor RedM con VORP Core.
+description: Recipe oficial para instalar automáticamente los 62 recursos principales de BCC Scripts en un servidor RedM con VORP Core.
 
+variables:
+    steam_webApiKey: "none"
+    
 tasks:
-  # 1. Descargar recursos principales de BCC desde GitHub
+  # Repositorios principales de BCC
   - action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-banks
     dest: ./resources/[bcc]/bcc-banks
@@ -120,14 +123,10 @@ tasks:
     src: https://github.com/BryceCanyonCounty/bcc-acidtrip
     dest: ./resources/[bcc]/bcc-acidtrip
 
-  # 2. Repositorios extra
+  # Repositorios extra válidos
   - action: download_github
     src: https://github.com/BryceCanyonCounty/redbackup
     dest: ./resources/[bcc]/redbackup
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-txadmin-recipe
-    dest: ./resources/[bcc]/bcc-txadmin-recipe
 
   - action: download_github
     src: https://github.com/BryceCanyonCounty/vorp_txadmin_recipe
