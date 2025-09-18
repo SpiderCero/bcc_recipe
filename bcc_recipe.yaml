@@ -1,139 +1,99 @@
-$engine: 3
-$onesync: on
-$steamRequired: true
-
+version: "1.0"
 name: BCC Scripts Pack
 author: BryceCanyonCounty
-description: Recipe oficial para instalar automáticamente los 62 recursos principales de BCC Scripts en un servidor RedM con VORP Core.
+description: |
+  Official recipe to automatically install the 62 main resources of BCC Scripts for a RedM server with VORP Core.
 
 variables:
-    steam_webApiKey: "none"
-    
+  steam_webApiKey: "none"
+
 tasks:
-  # Repositorios principales de BCC
-  - action: download_github
+  # Main BCC Repositories
+  - name: Install BCC Banks
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-banks
     dest: ./resources/[bcc]/bcc-banks
 
-  - action: download_github
+  - name: Install BCC Farming
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-farming
     dest: ./resources/[bcc]/bcc-farming
 
-  - action: download_github
+  - name: Install BCC Vehicle Fixes
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-vehiclefixes
     dest: ./resources/[bcc]/bcc-vehiclefixes
 
-  - action: download_github
+  - name: Install BCC Shops
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-shops
     dest: ./resources/[bcc]/bcc-shops
 
-  - action: download_github
+  - name: Install BCC Society
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-society
     dest: ./resources/[bcc]/bcc-society
 
-  - action: download_github
+  - name: Install BCC Ranch
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-ranch
     dest: ./resources/[bcc]/bcc-ranch
 
-  - action: download_github
+  # Additional BCC Repositories
+  - name: Install BCC Boats
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-boats
     dest: ./resources/[bcc]/bcc-boats
 
-  - action: download_github
+  - name: Install BCC Stables
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-stables
     dest: ./resources/[bcc]/bcc-stables
 
-  - action: download_github
+  - name: Install BCC Law
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-law
     dest: ./resources/[bcc]/bcc-law
 
-  - action: download_github
+  - name: Install BCC Guarma
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-guarma
     dest: ./resources/[bcc]/bcc-guarma
 
-  - action: download_github
+  - name: Install BCC Water
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-water
     dest: ./resources/[bcc]/bcc-water
 
-  - action: download_github
+  - name: Install BCC Bin
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-bin
     dest: ./resources/[bcc]/bcc-bin
 
-  - action: download_github
+  - name: Install BCC Robbery
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-robbery
     dest: ./resources/[bcc]/bcc-robbery
 
-  - action: download_github
+  - name: Install BCC Camp
+    action: download_github
     src: https://github.com/BryceCanyonCounty/bcc-camp
     dest: ./resources/[bcc]/bcc-camp
 
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-stashes
-    dest: ./resources/[bcc]/bcc-stashes
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-craft
-    dest: ./resources/[bcc]/bcc-craft
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-userlog
-    dest: ./resources/[bcc]/bcc-userlog
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-wagons
-    dest: ./resources/[bcc]/bcc-wagons
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-nazar
-    dest: ./resources/[bcc]/bcc-nazar
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-medical
-    dest: ./resources/[bcc]/bcc-medical
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-housing
-    dest: ./resources/[bcc]/bcc-housing
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-customblips
-    dest: ./resources/[bcc]/bcc-customblips
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-doorlocks
-    dest: ./resources/[bcc]/bcc-doorlocks
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-utils
-    dest: ./resources/[bcc]/bcc-utils
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-posse
-    dest: ./resources/[bcc]/bcc-posse
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-serverpassword
-    dest: ./resources/[bcc]/bcc-serverpassword
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-blindfold
-    dest: ./resources/[bcc]/bcc-blindfold
-
-  - action: download_github
-    src: https://github.com/BryceCanyonCounty/bcc-acidtrip
-    dest: ./resources/[bcc]/bcc-acidtrip
-
-  # Repositorios extra válidos
-  - action: download_github
+  # Extra Repositories
+  - name: Install RedBackup
+    action: download_github
     src: https://github.com/BryceCanyonCounty/redbackup
     dest: ./resources/[bcc]/redbackup
 
-  - action: download_github
+  - name: Install VORP txAdmin Recipe
+    action: download_github
     src: https://github.com/BryceCanyonCounty/vorp_txadmin_recipe
     dest: ./resources/[bcc]/vorp_txadmin_recipe
 
-  # Crear server.cfg básico
-  - action: write_file
+  # Create server.cfg File
+  - name: Generate server.cfg
+    action: write_file
     path: ./server.cfg
     contents: |
       ## SERVER CONFIG ##
@@ -143,12 +103,12 @@ tasks:
       set gamename rdr3
       set sv_enforceGameBuild 1491
 
-      # Recursos base VORP
+      # Base VORP Resources
       ensure vorp_core
       ensure vorp_inventory
       ensure vorp_character
 
-      # Scripts principales de BCC
+      # Main BCC Resources
       ensure bcc-banks
       ensure bcc-farming
       ensure bcc-vehiclefixes
