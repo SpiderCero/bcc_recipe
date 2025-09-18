@@ -256,8 +256,8 @@ tasks:
   # ------------------------
   # Configuración del server
   # ------------------------
-  - action: write_file
-    dest: ./server.cfg
+    - action: create_file
+    path: ./server.cfg
     data: |
       # --------------------------
       #  Servidor BCC Scripts Pack
@@ -343,3 +343,5 @@ tasks:
       ensure bcc-auctionhouse
       ensure bcc-treasury
       ensure bcc-banking
+
+      
