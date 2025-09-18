@@ -131,3 +131,49 @@ tasks:
   - action: download_github
     src: https://github.com/BryceCanyonCounty/vorp_txadmin_recipe
     dest: ./resources/[bcc]/vorp_txadmin_recipe
+
+  # Crear server.cfg básico
+  - action: write_file
+    path: ./server.cfg
+    contents: |
+      ## SERVER CONFIG ##
+      endpoint_add_tcp "0.0.0.0:30120"
+      endpoint_add_udp "0.0.0.0:30120"
+      sv_maxclients 48
+      set gamename rdr3
+      set sv_enforceGameBuild 1491
+
+      # Recursos base VORP
+      ensure vorp_core
+      ensure vorp_inventory
+      ensure vorp_character
+
+      # Scripts principales de BCC
+      ensure bcc-banks
+      ensure bcc-farming
+      ensure bcc-vehiclefixes
+      ensure bcc-shops
+      ensure bcc-society
+      ensure bcc-ranch
+      ensure bcc-boats
+      ensure bcc-stables
+      ensure bcc-law
+      ensure bcc-guarma
+      ensure bcc-water
+      ensure bcc-bin
+      ensure bcc-robbery
+      ensure bcc-camp
+      ensure bcc-stashes
+      ensure bcc-craft
+      ensure bcc-userlog
+      ensure bcc-wagons
+      ensure bcc-nazar
+      ensure bcc-medical
+      ensure bcc-housing
+      ensure bcc-customblips
+      ensure bcc-doorlocks
+      ensure bcc-utils
+      ensure bcc-posse
+      ensure bcc-serverpassword
+      ensure bcc-blindfold
+      ensure bcc-acidtrip
